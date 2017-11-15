@@ -89,3 +89,14 @@ export default class App extends PureComponent {
   ...
 }
 ```
+
+## 4) Redux
+
+### installed deps
+
+`yarn add react-redux redux redux-thunk redux-devtools-extension`
+
+### write our Users redux module
+- reducer
+- action types
+- action creator
