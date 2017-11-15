@@ -1,9 +1,19 @@
 import FetchPonyFill from 'fetch-ponyfill'
+import { reduce, camelCase } from 'lodash'
 import Debug from 'debug'
 
 const log = Debug('src:helpers:api')
 
-const parseResponse = (response) => log(response)
+const parseResponse = ({ results }) =>
+  results.map((result) =>
+    reduce(result, (accumulator, value, key) =>
+      ({
+        ...accumulator,
+        [camelCase(key)]: value,
+      }),
+    {})
+  )
+
 const parseError = (error) => log(error)
 
 const {

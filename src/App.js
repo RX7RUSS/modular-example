@@ -1,19 +1,18 @@
-import React, { Component } from 'react'
+import React, { PureComponent } from 'react'
 import Debug from 'debug'
-import { get } from './helpers/api'
+import { getUsers } from './helpers/api/Users'
 import logo from './logo.svg'
 import './App.css'
 
 const log = Debug('src:App')
 
-class App extends Component {
+export default class App extends PureComponent {
 
   componentWillMount () {
-    get('https://randomuser.me/api?results=25')
+    getUsers()
   }
 
   render() {
-    log('here')
     return (
       <div className="App">
         <header className="App-header">
@@ -27,5 +26,3 @@ class App extends Component {
     )
   }
 }
-
-export default App
