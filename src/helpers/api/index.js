@@ -1,33 +1,14 @@
-# Modular Example
-
-## setup / helpers
-
-### Logging
-- `yarn add -D debug`
-
-```javascript
-// App.js
-
+import FetchPonyFill from 'fetch-ponyfill'
 import Debug from 'debug'
 
-const log = Debug('src:App')
+const log = Debug('src:helpers:api')
 
-// In the browser console
+const parseResponse = (response) => log(response)
+const parseError = (error) => log(error)
 
-> localStorage.debug='src:*'
-
-// Refresh
-
-```
-
-### Fetch Helpers
-- grab a fetch polyfill
-- `yarn add fetch-ponyfill`
-
-```javascript
-// src/helpers/api/index.js
-
-// write fetch helpers
+const {
+  fetch,
+} = FetchPonyFill()
 
 export const get = (url, params) =>
   fetch(url, params)
@@ -43,5 +24,3 @@ export const post = (url, params) =>
     .then(res => res.json())
     .then(res => parseResponse(res))
     .catch(error => parseError(error))
-```
-
