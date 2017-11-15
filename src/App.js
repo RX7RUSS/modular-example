@@ -1,15 +1,22 @@
 import React, { PureComponent } from 'react'
+import { connect } from 'react-redux'
 import Debug from 'debug'
-import { getUsers } from './helpers/api/Users'
+// import { getUsers } from './helpers/api/Users'
+import { fetchUsers } from './redux/Users'
 import logo from './logo.svg'
 import './App.css'
 
 const log = Debug('src:App')
 
-export default class App extends PureComponent {
+class App extends PureComponent {
 
   componentWillMount () {
+
+    const {
+      getUsers,
+    } = this.props
     getUsers()
+
   }
 
   render() {
@@ -26,3 +33,14 @@ export default class App extends PureComponent {
     )
   }
 }
+
+const mapStateToProps = ({ users }) => ({
+  users,
+})
+const mapDispatchToProps = (dispatch) => ({
+  getUsers: () => dispatch(fetchUsers()),
+})
+
+export default connect(
+  mapStateToProps, mapDispatchToProps
+)(App)

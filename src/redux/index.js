@@ -1,26 +1,17 @@
+import users from './Users'
 import thunk from 'redux-thunk'
-import { createStore, applyMiddleware } from 'redux'
+import { combineReducers, createStore, applyMiddleware } from 'redux'
 import { composeWithDevTools } from 'redux-devtools-extension'
 
-
-const initialState = {
-  users: [],
-}
-
-const reducer = (state = initialState, action) => {
-  switch(action.type) {
-
-  default:
-    return state
-
-  }
-}
+const rootReducer = combineReducers({
+  users,
+})
 
 const middleware = [
   thunk,
 ]
 
-const store = createStore(reducer, composeWithDevTools(
+const store = createStore(rootReducer, composeWithDevTools(
   applyMiddleware(
     ...middleware
   )

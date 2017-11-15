@@ -5,4 +5,4 @@ const log = Debug('src:helpers:api:Users')
 
 export const getUsers = () =>
   get('https://randomuser.me/api?results=25')
-    .then(res => log(res))
+    .then(res => res)
