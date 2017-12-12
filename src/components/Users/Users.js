@@ -22,13 +22,7 @@ export default class Users extends PureComponent {
       <div>
         {
           names.map(({ name }, index) =>
-            <div
-              key={index}
-              style={{
-                color: name.color,
-              }}
-              className={name.color}
-            >
+            <div key={index} style={{color: name.color,}} className={name.color}>
               {name.title}
               &nbsp;
               {name.first}
